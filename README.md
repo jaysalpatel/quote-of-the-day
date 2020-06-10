@@ -114,10 +114,18 @@ sudo usermod -a -G docker ec2-user
 exit
 
 
+###install apache
+sudo yum -y install httpd
+sudo systemctl start httpd.service
+sudo systemctl enable httpd.service
+
+echo "hello world $(hostname -f) > /var/www/html/home.html
+
+
+
 ###log out and log back in so that your group membership is reevaulated
 
-su -s ${USER}
-
+sudo su
 sudo chmod 777 /var/docker.sock
 
 
@@ -129,8 +137,20 @@ sudo service jenkins stop
 
 sudo service jenkins start
 
+Remove test page after install apache on EC@2 instance
 
-docker 
+
+mv /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/welcome.conf_backup
+
+sudo systemctl restart httpd
+
+sudo cd /etc/httpd
+
+sudo rmdir conf.d
+
+
+
+
 
 
 
