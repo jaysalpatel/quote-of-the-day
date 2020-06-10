@@ -149,7 +149,11 @@ sudo cd /etc/httpd
 sudo rmdir conf.d
 
 
+###git error: failed to push some refs to 'https://github.com/jaysalpatel/quote-of-the-day.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally
 
+git push -f origin master
 
 
 
