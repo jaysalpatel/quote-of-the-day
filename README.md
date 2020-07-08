@@ -137,7 +137,7 @@ sudo service jenkins stop
 
 sudo service jenkins start
 
-Remove test page after install apache on EC@2 instance
+Remove test page after install apache on EC2 instance
 
 
 mv /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/welcome.conf_backup

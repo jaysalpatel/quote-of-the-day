@@ -24,16 +24,17 @@ sudo yum update -y
 
 6. We have to install LAMP stack dependencies
 
-normal sudo yum install -y  httpd24 php56 mysql55-server php56-mysqlnd will not packages
+sudo amazon-linux-extras install -y lamp-mariadb10.2-php7.2 php7.2
 
-Use yum search command
+cat /etc/system-release
 
-yum search httpd 
+sudo yum install -y httpd mariadb-server
 
-yum search php
+sudo systemctl start httpd
 
-yum search mysql
+sudo systemctl enable httpd
 
+sudo systemctl is-enabled httpd
 
 7. cd into apache directory root
 
@@ -47,8 +48,24 @@ sudo usermod -a -G apache ec2-user
 
 rm /var/www/html/phpinfo.php
 
-10. start mysql service
+10. log out and then log back in again 
 
-sudo service mysqld start
+exit
+ 
+11. verify group membership in apache group
 
-sudo mysql_secure_installation
+groups
+
+12. change the group ownership of /var/www and its contents to the apache group
+
+sudo chown -R ec2-user:apache /var/www
+
+13. to add group write permissions and to set the group ID
+
+sudo chmod 2775 /var/www && find /var/www -type d -exec sudo chmod 2775 {} \;
+
+
+14. create php file in apache doc root
+
+echo "<?php index(); ?>" > /var/www/html/index.php
+

@@ -1,13 +1,24 @@
 <?php
-$servername = "localhost;";
-$username = "username"; 
-$password = "password";
-$dbname = "quote";
+$servername = "[RDS ENDPOINT]";
+$username   = "[username]";
+$password   = "[password]";
+$dbname     = "quote"
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+// create the connection
+$conn  = new mysqli($servername, $username, $password, $dbname);
 
-$word = $_POST['quote'];
+$Quote = $_POST['quote'];
 
-$sql = "INSERT INTO quotes (id, quote) VALUES (null, '$quote')";
+$sql   = "INSERT INTO quotes (id, quote) VALUES (null, '$Quote')";
 
+if (mysqli_query($conn, $mysql)) {
+    echo "the quote is inserted";
+}
+else {
+    echo 'It is not inserted';
+}
+
+header("refresh:2, url=index.php");
+
+$conn->close();
+?>

@@ -1,18 +1,18 @@
 <html>
 <body>
-<h1 style="color:blue;">Welcome to the word of the day</h1>
-<p style="color:green;" style="font:verdana;">Here is your word</p>
+
+<h1>Welcome to your quote of the day</h1>
+<p>here is your randomly selected quote</p>
 
 <?php include ('query.php'); ?>
-
-<br/>
-<br/>
-
+<br />
+<br />
+<br />
 </body>
-    <form action="insert.php" method="POST">
-    The other option is to type in your own word : <input type="text" name="word">
-    <br/>
-    <input type="submit" value="Insert">
-    </form>
 
+    <form action="insert.php" method="POST">
+     or input your own quote: <input type="text" name="quote">
+     <br/>
+     <input type="submit" value="insert">  
+    </form>
 </html>
