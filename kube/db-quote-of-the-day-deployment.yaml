@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: db-quote-of-the-day
+  labels:
+    app: db-quote-of-the-day
+  spec:
+    replicas: 2
+    selector:
+      matchLabels:
+        app: db-quote-of-the-day
+    template:
+      metadata:
+        labels:
+          app: db-quote-of-the-day
+      spec:
+        containers:
+        - name: db-quote-of-the-day
+          image: jaysalpatel/db-quote-of-the-day
+          ports:
+          - containerPort: 3306

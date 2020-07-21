@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-quote-of-the-day
+  labels:
+    app: web-quote-of-the-day
+spec: 
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web-quote-of-the-day
+  template:
+    metadata: 
+      labels:
+        app: web-quote-of-the-day
+    spec:
+      containers:
+      - name: web-quote-of-the-day
+        image: jaysalpatel/web-quote-of-the-day
+        ports:
+        - containerPort: 80
