@@ -1,7 +1,8 @@
 FROM alpine
 
 RUN yum update -y 
-RUN yum install httpd php php-mysqlnd
+RUN yum install -y \
+        httpd php php-mysqlnd
 RUN systemctl enable httpd
 RUN chkconfig httpd on
 RUN yum install -y nano

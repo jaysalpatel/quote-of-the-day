@@ -69,6 +69,11 @@ Documentation and steps on setting up my AWS environment
 6. Microservices
     - 
 
+    When building the docker image for the lamp stack, I encountered an error returning command '/bin/sh -c yum update -y' returned a non-zero-code: 127
+    This is a path related issue and profile. When you use sh -c or bash -c the profile files are not loaded. But when you use bash -lc it means load the profile and also execute the command. Now your profile may have the necessary path setup the run this command 
+        that was solved by including
+        ENTRYPOINT [ "/bin/bash", "-lc" ]
+
 
 7. Serverless 
     - Write a AWS Lambda function to email you a list of all the Quotes in the DynamoDB table every night. Implement least privilage security for the Lambda role. (Hint: Lambda using Python 3, boto3, Amazon SES, and scheduled with AWS Cloudwatch)
@@ -76,11 +81,6 @@ Documentation and steps on setting up my AWS environment
     - Use your SSL enabled bucket as the primary domain landing page with static content
     Create an AWS API Gateway, use it to forward HTTP requests to an AWS Lambda function that queries the same data from DynamoDB as 
 
-
-
-###Running a my flask-python signup image
-
-docker run -d -p 80:5000 jaysalpatel/flask-signup1:latest
 
 
 
