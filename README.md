@@ -65,7 +65,6 @@ Documentation and steps on setting up my AWS environment
     - Register a domain(or re-use and existing one)
 
 
-
 6. Microservices
     - 
 
