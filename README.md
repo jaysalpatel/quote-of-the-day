@@ -65,6 +65,7 @@ Documentation and steps on setting up my AWS environment
     - Register a domain(or re-use and existing one)
 
 
+
 6. Microservices
     - 
 
@@ -80,6 +81,13 @@ Documentation and steps on setting up my AWS environment
     - Use your SSL enabled bucket as the primary domain landing page with static content
     Create an AWS API Gateway, use it to forward HTTP requests to an AWS Lambda function that queries the same data from DynamoDB as 
 
+
+8. Packer
+    - Building an AMI with packer with Lamp stack components
+            -errors
+                Failed to initialize build 'amazon-instance': error initializing builder 'amazon-instance': Unrecognized remote plugin message: Error starting plugin server: listen unix /tmp/packer-plugin085158145: listen: operation not permitted
+            Solution: Attach IAM policy Roles
+            
 
 
 
