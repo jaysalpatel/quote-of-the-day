@@ -1,18 +1,20 @@
 provider "aws" {
-  region = "us-east-1"
+    region = "us-east-1"
+    access_key = "AKIAXZ2UHMH4UU7Q2B6V"
+    secret_key = "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"
 }
 
 resource "aws_key_pair" "default" {
-  key_name = "key3"
-  public_key = "${file("${var.key_path}")}"
+  key_name = "quote-of-the-day"
+  public_key = file("./quote-of-the-day.pem")
 }
 
 resource "aws_instance" "lamp1" {
-  ami = "${var.ami}"
+  ami = "ami-08f3d892de259504d"
   instance_type = "${var.instance_type}"
   key_name = "${aws_key_pair.default.id}"
   security_groups = ["${aws_security_group.default.name}"]
-  user_data = "${file("provision.sh")}"
+  user_data = "${file("./provision.sh")}"
 }
 
 resource "aws_instance" "lamp2" {
@@ -20,7 +22,7 @@ resource "aws_instance" "lamp2" {
   instance_type = "${var.instance_type}"
   key_name = "${aws_key_pair.default.id}"
   security_groups = ["${aws_security_group.default.name}"]
-  user_data = "${file("provision.sh")}"
+  user_data = "${file("./provision.sh")}"
 }
 
 resource "aws_security_group" "default" {
@@ -48,7 +50,7 @@ resource "aws_security_group" "default" {
   }
 }
 
-resource "aws_elb" "default" {
+resource "aws_elb" "ec2-elb" {
   name = "ec2-elb"
   instances = ["${aws_instance.lamp1.id}", "${aws_instance.lamp2.id}"]
   availability_zones = ["us-east-1a", "us-east-1b", "us-east-1c"]
