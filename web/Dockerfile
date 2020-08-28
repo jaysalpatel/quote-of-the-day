@@ -1,12 +1,12 @@
-FROM alpine
+FROM centos:centos8
 
-RUN yum update -y 
-RUN yum install -y \
+RUN yum -y update  
+RUN yum -y install \
         httpd php php-mysqlnd
 RUN systemctl enable httpd
 RUN chkconfig httpd on
-RUN yum install -y nano
-RUN yum install -y mysql 
+RUN yum -y install nano
+RUN yum -y install mysql 
 
 COPY httpd.conf /etc/httpd/conf/httpd.conf
 COPY index.php /var/www/html/index.php
