@@ -1,3 +1,6 @@
+Infrastructure as Code project using Terraform to create LAMP stack resources
+
+
 Documentation and steps on setting up my AWS environment
 
 1. Created IAM Account as a non-root user
